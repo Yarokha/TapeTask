@@ -35,7 +35,7 @@ Public members:
         Перемотка на n ячеек назад
     
     void MoveTo(unsigned long long n);
-        Перемотка на n ячейку
+        Перемотка на n-ую ячейку
     
     void WriteCell(int32_t val); 
         Запись в текущую ячейку
