@@ -31,7 +31,7 @@ Public members:
     void Backward(unsigned long long n); 
         Перемотка на n ячеек назад
     
-    void MoveTo(unsigned long n);
+    void MoveTo(unsigned long long n);
         Перемотка на n ячейку
     
     void WriteCell(int32_t val); 
