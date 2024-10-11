@@ -4,24 +4,32 @@
 В нем реализованны следующие функции:
 
     Taped(std::string file_path, std::ios_base::openmode openmode, std::map<std::string, int> sett);
+    int32_t ReadCell() const; 
+    Чтение значения в ячейки ленты (возвращает значение из текущего положения в тесктовом файле  [ячейка ленты = стока файла] )
     
-    int32_t ReadCell() const;  Чтение значения в ячейки ленты (возвращает значение из текущего положения в тесктовом файле  [ячейка ленты = стока файла] )
+    void NextCell();
+    Переход к следующей ячейке
     
-    void NextCell(); - Переход к следующей ячейке
+    void PrevCell();
+    Переход к предыдущей ячейке
     
-    void PrevCell(); - Переход к предыдущей ячейке
+    void Forward(unsigned long long n); 
+    Перемотка на n ячеек вперед
     
-    void Forward(unsigned long long n); - Перемотка на n ячеек вперед
+    void Backward(unsigned long long n); 
+    Перемотка на n ячеек назад
     
-    void Backward(unsigned long long n);  - Перемотка на n ячеек назад
+    void MoveTo(unsigned long n);
+    Перемотка на n ячейку
     
-    void MoveTo(unsigned long n); - Перемотка на n ячейку
+    void WriteCell(int32_t val); 
+    Запись в текущую ячейку
     
-    void WriteCell(int32_t val); - Запись в текущую ячейку
+    bool IsLast() const; 
+    Запись в текущую ячейку
     
-    bool IsLast() const; - Запись в текущую ячейку
-    
-    void Erase(); - Вспомогательная функция для очистки текстового файла (для временных файлов)
+    void Erase();
+    Вспомогательная функция для очистки текстового файла (для временных файлов)
 
 # Class SortTape
 Класс создан для сортировки входной ленты в выходную при условии недостатчоного размера оперативной памяти (в файле Setings.conf задается количество элементов массива).
