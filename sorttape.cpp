@@ -62,8 +62,6 @@ void SortTape::Sort(Taped& input_tape, Taped& output_tape) {
 
         temp_out->Erase();
         Merge(memory.begin(), memend, *temp_in, *temp_out);
-        //temp_out->StartCell();
-        //temp_in->StartCell();
         temp_out->MoveTo(0);
         temp_in->MoveTo(0);
         std::swap(temp_in, temp_out);
@@ -74,7 +72,7 @@ void SortTape::Sort(Taped& input_tape, Taped& output_tape) {
 //nonclass objects
 void CreateTempFile(fs::path tmp, unsigned int i) {
     std::string temp_name = "temp_" + std::to_string(i) + ".dat";
-    std::ofstream temp_file(tmp.string() + "/" + temp_name);
+    std::ofstream temp_file(tmp.string() + "/" + temp_name, std::ios::out | std::ios::trunc);
     temp_file.close();
 }
 
