@@ -30,9 +30,6 @@ std::map<std::string, int> LoadConfig() {
 
     float value = 0;
     std::ifstream config_file("Settings.conf", std::ios::in);
-    if (!config_file.is_open()) {
-        //throw _exception
-    }
     while (std::getline(config_file, param_name, '='), std::getline(config_file, param_val)) {
         settings[param_name] = std::stoi(param_val);
     }
