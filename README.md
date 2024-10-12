@@ -67,7 +67,7 @@ private members:
    
     template <typename ForwardIter>  
     void Merge(ForwardIter begin, ForwardIter end, Taped& in, Taped& out);
-        Вспомогательная функция для слияния оперативной памяти из одной ленты в другую.
+        Вспомогательная функция для слияния "оперативной памяти" и одной временной ленты в другую.
 
 public members:
    
