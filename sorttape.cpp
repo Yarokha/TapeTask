@@ -78,7 +78,7 @@ void CreateTempFile(fs::path tmp, unsigned int i) {
 
 
 namespace tape {
-    void sort(Taped& input, Taped& output, std::map<std::string, int>settings) {
+    void sort(Taped& input, Taped& output, std::map<std::string,int> settings) {
         fs::path tmp = "./tmp";
         fs::create_directory(tmp);
         CreateTempFile(tmp, 1);

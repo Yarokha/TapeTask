@@ -26,5 +26,5 @@ public:
 
 
 namespace tape {
-    void sort(Taped& input, Taped& output, std::map<std::string, int>settings);
+    void sort(Taped& input, Taped& output, std::map<std::string,int> settings);
 }
