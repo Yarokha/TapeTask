@@ -20,7 +20,7 @@ void Taped::Previous() {
         return;
     }
     --ncell;
-    islast = tape.eof();
+
     if (islast) {
         tape.clear();
     }
