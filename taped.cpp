@@ -1,10 +1,13 @@
 #include "taped.h"
 
 void Taped::Next() {
+    if (islast) {
+        return;
+    }
     cur_pos = tape.tellg();
     std::getline(tape, temp_input);
     islast = tape.eof();
-    ++ncell;
+        ++ncell;
     isempty = temp_input.empty();
     if (isempty) {
         return;
