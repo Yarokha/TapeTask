@@ -98,7 +98,7 @@ void Taped::Backward(unsigned long long  n) {
     }
 }
 
-void Taped::MoveTo(unsigned long n) {
+void Taped::MoveTo(unsigned long long n) {
     if (n > ncell) {
         Forward(n - ncell);
     }

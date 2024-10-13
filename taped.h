@@ -47,7 +47,7 @@ public:
     void PrevCell();
     void Forward(unsigned long long n);
     void Backward(unsigned long long n);
-    void MoveTo(unsigned long n);
+    void MoveTo(unsigned long long n);
     void WriteCell(int32_t val);
     bool IsLast() const;
     void Erase();
