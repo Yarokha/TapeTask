@@ -7,7 +7,6 @@ void Taped::Next() {
     ++ncell;
     isempty = temp_input.empty();
     if (isempty) {
-        value = 0;
         return;
     }
     value = std::stoi(temp_input);
@@ -40,9 +39,8 @@ void Taped::Previous() {
     tape.seekg(cur_pos);
     std::getline(tape, temp_input);
     isempty = temp_input.empty();
-    if (isempty) { 
-        value = 0;
-        return; 
+    if (isempty) {
+        return;
     }
     value = std::stoi(temp_input);
 
