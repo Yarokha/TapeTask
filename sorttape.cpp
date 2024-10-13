@@ -69,7 +69,7 @@ void SortTape::Sort(Taped& input_tape, Taped& output_tape) {
 }
 
 
-//nonclass objects
+//non-class members
 void CreateTempFile(fs::path tmp, unsigned int i) {
     std::string temp_name = "temp_" + std::to_string(i) + ".dat";
     std::ofstream temp_file(tmp.string() + "/" + temp_name, std::ios::out | std::ios::trunc);
