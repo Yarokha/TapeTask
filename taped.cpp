@@ -1,9 +1,8 @@
 #include "taped.h"
 
 void Taped::Next() {
-    if (islast) {
+    if (islast)
         return;
-    }
     cur_pos = tape.tellg();
     std::getline(tape, temp_input);
     islast = tape.eof();
@@ -19,9 +18,8 @@ void Taped::Previous() {
     if (cur_pos == 0) {
         return;
     }
-   
     --ncell;
-
+    islast = tape.eof();
     if (islast) {
         tape.clear();
     }
@@ -43,9 +41,7 @@ void Taped::Previous() {
     tape.seekg(cur_pos);
     std::getline(tape, temp_input);
     isempty = temp_input.empty();
-    if (isempty) {
-        return;
-    }
+    if (isempty) { return; }
     value = std::stoi(temp_input);
 
 }
@@ -57,8 +53,8 @@ void Taped::CreateTempFile(fs::path tmp, unsigned int i) {
 }
 
 //public
-Taped::Taped(std::string file_path, std::ios_base::openmode openmode, std::map<std::string, int> sett): 
-    tape(file_path, openmode), file_path(file_path), settings(sett){
+Taped::Taped(std::string file_path, std::ios_base::openmode openmode, std::map<std::string, int> sett) :
+    tape(file_path, openmode), file_path(file_path), settings(sett) {
 
     std::getline(tape, temp_input);
 
@@ -70,7 +66,7 @@ Taped::Taped(std::string file_path, std::ios_base::openmode openmode, std::map<s
     ncell = 0;
 }
 
-int32_t Taped::ReadCell() const{
+int32_t Taped::ReadCell() const {
     std::this_thread::sleep_for(settings.t_reading);
     return value;
 }
@@ -107,12 +103,12 @@ void Taped::MoveTo(unsigned long long n) {
         Forward(n - ncell);
     }
     else if (n < ncell) {
-        Backward(ncell-n);
+        Backward(ncell - n);
     }
 }
 
 void Taped::WriteCell(int32_t val) {
-    if (islast){
+    if (islast) {
         if (tape.eof()) {
             tape.clear();
         }
@@ -126,12 +122,12 @@ void Taped::WriteCell(int32_t val) {
         fs::path tmp = "./tmp_0/";
         fs::create_directory(tmp);
         CreateTempFile(tmp, 0);
-        std::fstream temp_file (tmp.string() + "temp_0.dat", std::ios::in | std::ios::out | std::ios::trunc);
+        std::fstream temp_file(tmp.string() + "temp_0.dat", std::ios::in | std::ios::out | std::ios::trunc);
         tape.seekg(0);
         std::string temp;
         while (tape.tellg() != cur_pos) {
             std::getline(tape, temp);
-            temp_file << temp<<std::endl;
+            temp_file << temp << std::endl;
         }
         temp_file << val << std::endl;
         std::getline(tape, temp);
@@ -148,7 +144,7 @@ void Taped::WriteCell(int32_t val) {
         temp_file.close();
         fs::remove_all(tmp);
         tape.clear();
-        
+
         tape.seekp(cur_pos);
         tape.seekg(cur_pos);
         std::getline(tape, temp);
@@ -156,7 +152,7 @@ void Taped::WriteCell(int32_t val) {
     std::this_thread::sleep_for(settings.t_writing);
 }
 
-bool Taped::IsLast() const{
+bool Taped::IsLast() const {
     return islast;
 }
 
