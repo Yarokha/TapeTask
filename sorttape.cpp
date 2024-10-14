@@ -51,7 +51,6 @@ SortTape::SortTape(Taped& temp1, Taped& temp2, int memory_size) {
 }
 
 void SortTape::Sort(Taped& input_tape, Taped& output_tape) {
-
     while (!input_tape.IsLast()) {
 
         auto memend = LoadInMem(input_tape);
