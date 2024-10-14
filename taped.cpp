@@ -1,8 +1,9 @@
 #include "taped.h"
 
 void Taped::Next() {
-    if (islast)
+    if (islast) {
         return;
+    }
     cur_pos = tape.tellg();
     std::getline(tape, temp_input);
     islast = tape.eof();
