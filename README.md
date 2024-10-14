@@ -59,7 +59,6 @@ Public members:
 6) Удаляется папка tmp
 
 В классе реализованы следующие функции:
-
 private members:
 
      std::vector<int32_t>::iterator LoadInMem(Taped& in);
