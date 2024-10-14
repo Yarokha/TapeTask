@@ -19,6 +19,7 @@ void Taped::Previous() {
     if (cur_pos == 0) {
         return;
     }
+   
     --ncell;
 
     if (islast) {
