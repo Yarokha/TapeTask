@@ -13,8 +13,8 @@ namespace fs = std::filesystem;
 
 class ITaped {
 public:
-    virtual long long int CellNum() const = 0;
     virtual int32_t ReadCell() const = 0;
+    virtual long long int CellNum() const = 0;
     virtual void NextCell() = 0;
     virtual void PrevCell() = 0;
     virtual void Forward(unsigned long long) = 0;
@@ -59,7 +59,7 @@ private:
 public:
     Taped(std::string file_path, std::ios_base::openmode openmode, std::map<std::string, int> sett);
     int32_t ReadCell() const override;
-    long long int CellNum() const;
+    long long int CellNum() const override;
     void NextCell()override;
     void PrevCell()override;
     void Forward(unsigned long long n)override;
