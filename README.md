@@ -1,4 +1,4 @@
-# Интерфейс ITyped.
+# Интерфейс ITyped
 Представен виртуальными функциями ниже: 
 
     virtual int32_t ReadCell() const = 0;
