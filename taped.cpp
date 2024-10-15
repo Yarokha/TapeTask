@@ -1,6 +1,6 @@
 #include "taped.h"
 
-void Taped::Next() {
+void Taped::Next(){
     if (islast) {
         return;
     }
@@ -15,7 +15,7 @@ void Taped::Next() {
     value = std::stoi(temp_input);
 }
 
-void Taped::Previous() {
+void Taped::Previous(){
     if (cur_pos == 0) {
         return;
     }
@@ -67,9 +67,13 @@ Taped::Taped(std::string file_path, std::ios_base::openmode openmode, std::map<s
     ncell = 0;
 }
 
-int32_t Taped::ReadCell() const {
+int32_t Taped::ReadCell() const{
     std::this_thread::sleep_for(settings.t_reading);
     return value;
+}
+
+long long int Taped::CellNum() const {
+    return ncell;
 }
 
 void Taped::NextCell() {
