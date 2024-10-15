@@ -1,5 +1,39 @@
+# Интерфейс ITyped.
+Представен виртуальными функциями ниже: 
+
+    virtual int32_t ReadCell() const = 0;
+        Чтение значения в ячейки ленты.
+        
+    virtual long long int CellNum() const = 0;
+        Возвращает номер текущей ячейки.
+        
+    virtual void NextCell() = 0;
+        Переход к следующей ячейке.
+
+    virtual void PrevCell() = 0;
+        Переход к предыдущей ячейке.
+
+    virtual void Forward(unsigned long long) = 0;
+        Перемотка на n ячеек вперед.
+        
+    virtual void Backward(unsigned long long) = 0;
+        Перемотка на n ячеек назад. 
+    
+    virtual void MoveTo(unsigned long long) = 0;
+        Перемотка на n-ую ячейку.
+
+    virtual void WriteCell(int32_t) = 0;
+        Запись в ячейку.
+    
+    virtual bool IsLast() const = 0;
+        Проверка последняя ячейка в ленте или нет.
+    
+    ITaped& operator=(const ITaped) = delete;
+        Запрет присваивания. 
+
+
 # Class Taped
-Класс создан для эмуляции работы с лентой с помощью текстового файла.
+Класс Taped наследник интерфейса ITaped, который релизует эмуляцию работы с лентой с помощью текстового файла.
 В нем реализованы следующие функции:
 
 Private members:
@@ -21,33 +55,39 @@ Public members:
     Taped(std::string file_path, std::ios_base::openmode openmode, std::map<std::string, int> sett);
         Конструктор класса. Передается путь к текстовому файлу, как открыть файл, и map параметров задержек. 
 
-    int32_t ReadCell() const; 
+    int32_t ReadCell() const override; 
         Чтение значения в ячейки ленты (возвращает значение из текущего положения в текстовом файле [ячейка ленты = строка файла] )
+
+    long long int NumCell() const override; 
+        Возвращает номер текущей ячейки(отсчет с нуля).
     
-    void NextCell();
+    void NextCell() override;
         Переход к следующей ячейке с учетом задержки.
     
-    void PrevCell();
+    void PrevCell() override;
         Переход к предыдущей ячейке с учетом задержки.
     
-    void Forward(unsigned long long n); 
+    void Forward(unsigned long long n) override; 
         Перемотка на n ячеек вперед с учетом задержки.
     
-    void Backward(unsigned long long n); 
+    void Backward(unsigned long long n) override; 
         Перемотка на n ячеек назад с учетом задержки.
     
-    void MoveTo(unsigned long long n);
+    void MoveTo(unsigned long long n) override;
         Перемотка на n-ую ячейку с учетом задержки.
     
-    void WriteCell(int32_t val); 
+    void WriteCell(int32_t val) override; 
         Запись в текущую ячейку с учетом задержки.
     
-    bool IsLast() const; 
+    bool IsLast() const override; 
         Проверка последняя ячейка в ленте или нет.
     
     void Erase();
         Вспомогательная функция для очистки текстового файла (для временных файлов)
     
+    ~Taped();
+        Деструктор класс. При выходе закрывает файл. 
+        
 # Class SortTape
 Класс создан для сортировки входной ленты в выходную при условии недостаточного размера оперативной памяти (в файле Setings.conf задается количество элементов массива).
 Алгоритм реализован в следующем порядке:
