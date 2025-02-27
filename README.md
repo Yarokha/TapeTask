@@ -1,37 +1,3 @@
-# Интерфейс ITyped
-Представен виртуальными функциями ниже: 
-
-    virtual int32_t ReadCell() const = 0;
-        Чтение значения в ячейки ленты.
-        
-    virtual long long int CellNum() const = 0;
-        Возвращает номер текущей ячейки.
-        
-    virtual void NextCell() = 0;
-        Переход к следующей ячейке.
-
-    virtual void PrevCell() = 0;
-        Переход к предыдущей ячейке.
-
-    virtual void Forward(unsigned long long) = 0;
-        Перемотка на n ячеек вперед.
-        
-    virtual void Backward(unsigned long long) = 0;
-        Перемотка на n ячеек назад. 
-    
-    virtual void MoveTo(unsigned long long) = 0;
-        Перемотка на n-ую ячейку.
-
-    virtual void WriteCell(int32_t) = 0;
-        Запись в ячейку.
-    
-    virtual bool IsLast() const = 0;
-        Проверка последняя ячейка в ленте или нет.
-    
-    ITaped& operator=(const ITaped) = delete;
-        Запрет присваивания, ленту невозможно переприсвоить. 
-
-
 # Class Taped
 Класс Taped наследник интерфейса ITaped, который релизует эмуляцию работы с лентой с помощью текстового файла.
 В нем реализованы следующие функции:
