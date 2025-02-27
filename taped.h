@@ -11,22 +11,7 @@
 namespace fs = std::filesystem;
 
 
-class ITaped {
-public:
-    virtual int32_t ReadCell() const = 0;
-    virtual long long int CellNum() const = 0;
-    virtual void NextCell() = 0;
-    virtual void PrevCell() = 0;
-    virtual void Forward(unsigned long long) = 0;
-    virtual void Backward(unsigned long long) = 0;
-    virtual void MoveTo(unsigned long long) = 0;
-    virtual void WriteCell(int32_t) = 0;
-    virtual bool IsLast() const = 0;
-    ITaped& operator=(const ITaped) = delete;
-};
-
-
-class Taped : public ITaped{
+class Taped{
 private:
     struct Config {
         std::chrono::nanoseconds t_reading;
@@ -58,15 +43,15 @@ private:
     void CreateTempFile(fs::path tmp, unsigned int i);
 public:
     Taped(std::string file_path, std::ios_base::openmode openmode, std::map<std::string, int> sett);
-    int32_t ReadCell() const override;
-    long long int CellNum() const override;
-    void NextCell()override;
-    void PrevCell()override;
-    void Forward(unsigned long long n)override;
-    void Backward(unsigned long long n)override;
-    void MoveTo(unsigned long long n)override;
-    void WriteCell(int32_t val)override;
-    bool IsLast() const override;
+    int32_t ReadCell() const;
+    long long int CellNum() const;
+    void NextCell();
+    void PrevCell();
+    void Forward(unsigned long long n);
+    void Backward(unsigned long long n);
+    void MoveTo(unsigned long long n);
+    void WriteCell(int32_t val);
+    bool IsLast() const;
     void Erase();
     ~Taped();
 };
